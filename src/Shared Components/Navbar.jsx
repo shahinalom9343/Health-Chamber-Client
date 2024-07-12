@@ -1,5 +1,5 @@
 import React, { useEffect, useState } from "react";
-import { CiSearch } from "react-icons/ci";
+import usePrimaryButton from "../Hooks/usePrimaryButton";
 import {
   FaFacebook,
   FaLinkedin,
@@ -8,7 +8,8 @@ import {
   FaRegMoon,
 } from "react-icons/fa6";
 import { IoIosMail, IoLogoYoutube, IoMdSunny } from "react-icons/io";
-import { NavLink } from "react-router-dom";
+import { Link, NavLink } from "react-router-dom";
+import useSecondaryButton from "../Hooks/useSecondaryButton";
 
 const Navbar = () => {
   const [theme, setTheme] = useState("light");
@@ -28,30 +29,32 @@ const Navbar = () => {
   const navItems = (
     <>
       <NavLink
-        className="mx-4 text-sm leading-5 text-gray-900 transition-colors duration-300 transform  hover:text-blue-500  hover:border-b-4 hover:border-blue-400 md:my-0"
+        className="mx-4 text-sm leading-5  transition-colors duration-300 transform  hover:text-blue-500  hover:border-b-4 hover:border-blue-400 md:my-0"
         to="/"
       >
         Home
       </NavLink>
       <NavLink
-        className="mx-4 text-sm leading-5 text-gray-700 transition-colors duration-300 transform  hover:text-blue-500  hover:border-b-4 hover:border-blue-400 md:my-0"
+        className="mx-4 text-sm leading-5  transition-colors duration-300 transform  hover:text-blue-500  hover:border-b-4 hover:border-blue-400 md:my-0"
         to="/about"
       >
         About Us
       </NavLink>
       <NavLink
-        className="mx-4 text-sm leading-5 text-gray-700 transition-colors duration-300 transform  hover:text-blue-500  hover:border-b-4 hover:border-blue-400 md:my-0"
+        className="mx-4 text-sm leading-5  transition-colors duration-300 transform  hover:text-blue-500  hover:border-b-4 hover:border-blue-400 md:my-0"
         to="/contact"
       >
         Contact
       </NavLink>
     </>
   );
+  const loginButton = usePrimaryButton("Login");
+  const registerButton = useSecondaryButton("Register");
   return (
     <div className="fixed min-w-full">
       {/* upper navbar for contact info */}
-      <div className="hidden md:block">
-        <div className="navbar flex justify-center md:px-5 lg:px-10 items-center my-auto bg-green-100 dark:bg-black dark:text-black">
+      <div className="hidden lg:block bg-green-100 text-gray-700 dark:bg-gray-800 dark:text-white ">
+        <div className="navbar flex justify-center md:px-5 lg:px-10 items-center my-auto ">
           <div className="flex-1 gap-3 navbar-start">
             <div className="flex justify-center items-center gap-1">
               <div>
@@ -91,7 +94,7 @@ const Navbar = () => {
         </div>
       </div>
       {/* Lower navbar for different info */}
-      <div className="navbar bg-base-200 font-semibold top-0 shadow-lg dark:bg-transparent md:px-5 lg:px-10">
+      <div className="navbar bg-base-200 font-semibold top-0 shadow-lg dark:bg-none dark:text-white md:px-5 lg:px-10 z-10">
         <div className="navbar-start">
           <div className="dropdown">
             <div tabIndex={0} role="button" className="btn btn-ghost lg:hidden">
@@ -125,26 +128,25 @@ const Navbar = () => {
           </ul>
         </div>
         <div className="navbar-end">
-          <button className="text-2xl">
-            <CiSearch />
-          </button>
-          <a className="btn">Button</a>
+          {/* Theme controller button */}
+          <label className="swap swap-rotate mr-1">
+            <input
+              type="checkbox"
+              className="theme-controller "
+              onChange={handleTheme}
+            />
+
+            {/* sun icon */}
+            <IoMdSunny className="text-yellow-400 font-extrabold text-3xl swap-off" />
+
+            {/* moon icon */}
+            <FaRegMoon className="font-bold text-2xl swap-on" />
+          </label>
+          <div className="flex gap-1">
+            <Link to="/login">{loginButton}</Link>
+            <Link to="/register">{registerButton}</Link>
+          </div>
         </div>
-
-        {/* Theme controller button */}
-        <label className="swap swap-rotate">
-          <input
-            type="checkbox"
-            className="theme-controller "
-            onChange={handleTheme}
-          />
-
-          {/* sun icon */}
-          <IoMdSunny className="text-yellow-400 font-extrabold text-3xl swap-off" />
-
-          {/* moon icon */}
-          <FaRegMoon className="font-bold text-2xl swap-on" />
-        </label>
       </div>
     </div>
   );
