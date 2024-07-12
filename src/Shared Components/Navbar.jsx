@@ -30,15 +30,39 @@ const Navbar = () => {
     <>
       <NavLink
         className="mx-4 text-sm leading-5  transition-colors duration-300 transform  hover:text-blue-500  hover:border-b-4 hover:border-blue-400 md:my-0"
-        to="/"
+        to="/about"
       >
-        Home
+        About Us
       </NavLink>
       <NavLink
         className="mx-4 text-sm leading-5  transition-colors duration-300 transform  hover:text-blue-500  hover:border-b-4 hover:border-blue-400 md:my-0"
         to="/about"
       >
-        About Us
+        Center of Excellence
+      </NavLink>
+      <NavLink
+        className="mx-4 text-sm leading-5  transition-colors duration-300 transform  hover:text-blue-500  hover:border-b-4 hover:border-blue-400 md:my-0"
+        to="/about"
+      >
+        Departments
+      </NavLink>
+      <NavLink
+        className="mx-4 text-sm leading-5  transition-colors duration-300 transform  hover:text-blue-500  hover:border-b-4 hover:border-blue-400 md:my-0"
+        to="/about"
+      >
+        Find Doctors
+      </NavLink>
+      <NavLink
+        className="mx-4 text-sm leading-5  transition-colors duration-300 transform  hover:text-blue-500  hover:border-b-4 hover:border-blue-400 md:my-0"
+        to="/"
+      >
+        Patients & Visitors
+      </NavLink>
+      <NavLink
+        className="mx-4 text-sm leading-5  transition-colors duration-300 transform  hover:text-blue-500  hover:border-b-4 hover:border-blue-400 md:my-0"
+        to="/about"
+      >
+        Gallery
       </NavLink>
       <NavLink
         className="mx-4 text-sm leading-5  transition-colors duration-300 transform  hover:text-blue-500  hover:border-b-4 hover:border-blue-400 md:my-0"
@@ -120,7 +144,9 @@ const Navbar = () => {
               {navItems}
             </ul>
           </div>
-          <a className="btn btn-ghost text-xl">Health Chamber</a>
+          <Link to="/" className="btn btn-ghost text-xl">
+            Health Chamber
+          </Link>
         </div>
         <div className="navbar-center h-full hidden lg:flex">
           <ul className="py-3 mt-3 -mx-3 overflow-y-auto whitespace-nowrap scroll-hidden">
