@@ -1,8 +1,8 @@
 import React from "react";
-import { FaArrowAltCircleUp } from "react-icons/fa";
 import { FaFacebook, FaLinkedin } from "react-icons/fa6";
 import { IoLogoYoutube } from "react-icons/io";
 import { Link } from "react-router-dom";
+import GotoTop from "./GotoTop";
 
 const Footer = () => {
   return (
@@ -157,12 +157,7 @@ const Footer = () => {
               Md.Shahin Alom.
             </p>
           </div>
-          <Link
-            to="/"
-            className="text-2xl text-pink-300 font-semibold border-2 bg-green-700 p-3 rounded-3xl hidden lg:flex hover:bg-pink-300 hover:text-green-700"
-          >
-            <FaArrowAltCircleUp />
-          </Link>
+          <GotoTop />
         </div>
       </div>
     </footer>

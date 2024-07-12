@@ -12,7 +12,7 @@ import { Link, NavLink } from "react-router-dom";
 import useSecondaryButton from "../Hooks/useSecondaryButton";
 
 const Navbar = () => {
-  const [theme, setTheme] = useState("light");
+  const [theme, setTheme] = useState(localStorage.getItem("theme"));
   useEffect(() => {
     localStorage.setItem("theme", theme);
     const localTheme = localStorage.getItem("theme");
