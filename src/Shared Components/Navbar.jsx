@@ -1,32 +1,57 @@
-import React from "react";
+import React, { useEffect, useState } from "react";
 import { CiSearch } from "react-icons/ci";
 import {
   FaFacebook,
   FaLinkedin,
   FaLocationDot,
   FaPhoneVolume,
+  FaRegMoon,
 } from "react-icons/fa6";
-import { IoIosMail, IoLogoYoutube } from "react-icons/io";
+import { IoIosMail, IoLogoYoutube, IoMdSunny } from "react-icons/io";
+import { NavLink } from "react-router-dom";
 
 const Navbar = () => {
+  const [theme, setTheme] = useState("light");
+  useEffect(() => {
+    localStorage.setItem("theme", theme);
+    const localTheme = localStorage.getItem("theme");
+    document.querySelector("html").setAttribute("data-theme", localTheme);
+  }, [theme]);
+  const handleTheme = (e) => {
+    // console.log(theme);
+    if (e.target.checked) {
+      setTheme("dark");
+    } else {
+      setTheme("light");
+    }
+  };
   const navItems = (
     <>
-      <li className="hover:bg-emerald-700 hover:text-white hover:rounded-md">
-        <a>Home</a>
-      </li>
-      <li className="hover:bg-emerald-700 hover:text-white hover:rounded-md">
-        <a>About Us</a>
-      </li>
-      <li className="hover:bg-emerald-700 hover:text-white hover:rounded-md">
-        <a>Contact</a>
-      </li>
+      <NavLink
+        className="mx-4 text-sm leading-5 text-gray-900 transition-colors duration-300 transform  hover:text-blue-500  hover:border-b-4 hover:border-blue-400 md:my-0"
+        to="/"
+      >
+        Home
+      </NavLink>
+      <NavLink
+        className="mx-4 text-sm leading-5 text-gray-700 transition-colors duration-300 transform  hover:text-blue-500  hover:border-b-4 hover:border-blue-400 md:my-0"
+        to="/about"
+      >
+        About Us
+      </NavLink>
+      <NavLink
+        className="mx-4 text-sm leading-5 text-gray-700 transition-colors duration-300 transform  hover:text-blue-500  hover:border-b-4 hover:border-blue-400 md:my-0"
+        to="/contact"
+      >
+        Contact
+      </NavLink>
     </>
   );
   return (
-    <div>
+    <div className="fixed min-w-full">
       {/* upper navbar for contact info */}
       <div className="hidden md:block">
-        <div className="navbar flex justify-center md:px-5 lg:px-10 items-center my-auto bg-green-100">
+        <div className="navbar flex justify-center md:px-5 lg:px-10 items-center my-auto bg-green-100 dark:bg-black dark:text-black">
           <div className="flex-1 gap-3 navbar-start">
             <div className="flex justify-center items-center gap-1">
               <div>
@@ -49,7 +74,9 @@ const Navbar = () => {
           </div>
           <div className="flex-none navbar-end items-center gap-3">
             <div>
-              <button className="btn btn-outline">Book Your Appointment</button>
+              <button className="btn btn-outline hidden lg:flex">
+                Book Your Appointment
+              </button>
             </div>
             <div className="text-blue-700 hover:bg-violet-700 hover:text-white text-2xl bg-none border-2 p-1 rounded-full">
               <FaFacebook />
@@ -64,7 +91,7 @@ const Navbar = () => {
         </div>
       </div>
       {/* Lower navbar for different info */}
-      <div className="navbar bg-base-200 font-semibold">
+      <div className="navbar bg-base-200 font-semibold top-0 shadow-lg dark:bg-transparent md:px-5 lg:px-10">
         <div className="navbar-start">
           <div className="dropdown">
             <div tabIndex={0} role="button" className="btn btn-ghost lg:hidden">
@@ -85,15 +112,17 @@ const Navbar = () => {
             </div>
             <ul
               tabIndex={0}
-              className="menu menu-sm dropdown-content bg-base-100 rounded-box z-[1] mt-3 w-52 p-2 shadow"
+              className="menu menu-sm dropdown-content py-3 mt-3 -mx-3 overflow-y-auto whitespace-nowrap scroll-hidden"
             >
               {navItems}
             </ul>
           </div>
           <a className="btn btn-ghost text-xl">Health Chamber</a>
         </div>
-        <div className="navbar-center hidden lg:flex ">
-          <ul className="menu menu-horizontal px-1">{navItems}</ul>
+        <div className="navbar-center h-full hidden lg:flex">
+          <ul className="py-3 mt-3 -mx-3 overflow-y-auto whitespace-nowrap scroll-hidden">
+            {navItems}
+          </ul>
         </div>
         <div className="navbar-end">
           <button className="text-2xl">
@@ -101,6 +130,21 @@ const Navbar = () => {
           </button>
           <a className="btn">Button</a>
         </div>
+
+        {/* Theme controller button */}
+        <label className="swap swap-rotate">
+          <input
+            type="checkbox"
+            className="theme-controller "
+            onChange={handleTheme}
+          />
+
+          {/* sun icon */}
+          <IoMdSunny className="text-yellow-400 font-extrabold text-3xl swap-off" />
+
+          {/* moon icon */}
+          <FaRegMoon className="font-bold text-2xl swap-on" />
+        </label>
       </div>
     </div>
   );

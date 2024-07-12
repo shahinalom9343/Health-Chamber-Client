@@ -7,7 +7,9 @@ const MainLayout = () => {
   return (
     <div>
       {/* Navbar section */}
-      <Navbar></Navbar>
+      <div className="h-16 md:h-48">
+        <Navbar></Navbar>
+      </div>
       {/* Outlet components */}
       <Outlet></Outlet>
       {/* Footer section */}
