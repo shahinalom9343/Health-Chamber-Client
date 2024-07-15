@@ -1,26 +1,38 @@
-import React from "react";
+import React, { useContext } from "react";
 import { Link } from "react-router-dom";
+import { useForm } from "react-hook-form";
+import { AuthContext } from "../AuthProviders/AuthProviders";
 
 const Register = () => {
+  const { createUser } = useContext(AuthContext);
+  const {
+    register,
+    handleSubmit,
+    formState: { errors },
+  } = useForm();
+  const onSubmit = (data) => {
+    // console.log(data);
+    createUser(data.email, data.password)
+      .then((result) => {
+        const loggedUser = result.user;
+        console.log(loggedUser);
+      })
+      .catch((error) => {
+        console.log(error.message);
+      });
+  };
+
   return (
     <section className="bg-white dark:bg-gray-900">
-      <div className="container flex items-center justify-center min-h-screen px-6 mx-auto">
-        <form className="w-full max-w-md">
-          <div className="flex justify-center mx-auto">
-            <img
-              className="w-auto h-7 sm:h-8"
-              src="https://merakiui.com/images/logo.svg"
-              alt=""
-            />
-          </div>
-
-          <div className="flex items-center justify-center mt-6">
-            <a
-              href="#"
-              className="w-1/3 pb-4 font-medium text-center text-gray-800 capitalize border-b-2 border-blue-500 dark:border-blue-400 dark:text-white"
-            >
+      <div className="container  flex items-center justify-center px-6 mx-auto">
+        <form
+          className="w-full max-w-lg border-2 p-4 my-1 rounded-lg shadow-md"
+          onSubmit={handleSubmit(onSubmit)}
+        >
+          <div className="flex items-center justify-center">
+            <div className="w-1/3 pb-1 font-bold text-center text-2xl text-gray-800 capitalize border-b-2 border-blue-500 dark:border-blue-400 dark:text-white">
               sign up
-            </a>
+            </div>
           </div>
 
           <div className=" flex items-center mt-8">
@@ -43,12 +55,15 @@ const Register = () => {
 
             <input
               type="text"
+              name="name"
               className=" w-full py-3 text-gray-700 bg-white border rounded-lg px-11 dark:bg-gray-900 dark:text-gray-300 dark:border-gray-600 focus:border-blue-400 dark:focus:border-blue-300 focus:ring-blue-300 focus:outline-none focus:ring focus:ring-opacity-40"
               placeholder="Username"
+              {...register("name", { required: true })}
             />
+            {errors.name && <span>Username is required</span>}
           </div>
 
-          <label className="flex items-center px-3 py-3 mx-auto mt-6 text-center bg-white border-2 border-dashed rounded-lg cursor-pointer dark:border-gray-600 dark:bg-gray-900">
+          <label className="flex items-center px-3 py-3 mx-auto mt-6 text-center bg-white  border rounded-lg cursor-pointer dark:border-gray-600 dark:bg-gray-900">
             <svg
               xmlns="http://www.w3.org/2000/svg"
               className="w-6 h-6 text-gray-300 dark:text-gray-500"
@@ -89,9 +104,12 @@ const Register = () => {
 
             <input
               type="email"
+              name="email"
               className="block w-full py-3 text-gray-700 bg-white border rounded-lg px-11 dark:bg-gray-900 dark:text-gray-300 dark:border-gray-600 focus:border-blue-400 dark:focus:border-blue-300 focus:ring-blue-300 focus:outline-none focus:ring focus:ring-opacity-40"
               placeholder="Email address"
+              {...register("email", { required: true })}
             />
+            {errors.email && <span>User Email is required</span>}
           </div>
 
           <div className="flex items-center mt-4">
@@ -114,9 +132,12 @@ const Register = () => {
 
             <input
               type="password"
+              name="password"
               className="block w-full px-10 py-3 text-gray-700 bg-white border rounded-lg dark:bg-gray-900 dark:text-gray-300 dark:border-gray-600 focus:border-blue-400 dark:focus:border-blue-300 focus:ring-blue-300 focus:outline-none focus:ring focus:ring-opacity-40"
               placeholder="Password"
+              {...register("password", { required: true })}
             />
+            {errors.password && <span>Password field is required</span>}
           </div>
 
           <div className=" flex items-center mt-4">
@@ -139,22 +160,29 @@ const Register = () => {
 
             <input
               type="password"
+              name="confirm"
               className="block w-full px-10 py-3 text-gray-700 bg-white border rounded-lg dark:bg-gray-900 dark:text-gray-300 dark:border-gray-600 focus:border-blue-400 dark:focus:border-blue-300 focus:ring-blue-300 focus:outline-none focus:ring focus:ring-opacity-40"
               placeholder="Confirm Password"
+              {...register("confirm", { required: true })}
             />
+            {errors.confirm && <span>Confirm Password is required</span>}
           </div>
 
           <div className="mt-6">
-            <button className="w-full px-6 py-3 text-sm font-medium tracking-wide text-white capitalize  bg-blue-500 rounded-lg hover:bg-blue-400 focus:outline-none focus:ring focus:ring-blue-300 focus:ring-opacity-50">
+            <button
+              type="submit"
+              className="w-full px-6 py-3 text-sm font-medium tracking-wide text-white capitalize  bg-blue-500 rounded-lg hover:bg-blue-400 focus:outline-none focus:ring focus:ring-blue-300 focus:ring-opacity-50"
+            >
               Sign Up
             </button>
 
             <div className="mt-6 text-center ">
+              Already have an account?
               <Link
                 to="/login"
-                className="text-sm text-blue-500 hover:underline dark:text-blue-400"
+                className="text-sm ml-1 text-blue-500 hover:underline dark:text-blue-400"
               >
-                Already have an account? Sign In
+                Sign In
               </Link>
             </div>
           </div>
