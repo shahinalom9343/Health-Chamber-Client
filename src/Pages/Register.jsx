@@ -1,25 +1,50 @@
-import React, { useContext } from "react";
-import { Link } from "react-router-dom";
+import React, { useContext, useState } from "react";
+import { Link, useNavigate } from "react-router-dom";
 import { useForm } from "react-hook-form";
 import { AuthContext } from "../AuthProviders/AuthProviders";
+import Swal from "sweetalert2";
+import useAxiosPublic from "../Hooks/useAxiosPublic";
+import { FaEye, FaEyeSlash } from "react-icons/fa";
 
 const Register = () => {
   const { createUser } = useContext(AuthContext);
+  const [showPassword, setShowPassword] = useState(false);
+  const axiosPublic = useAxiosPublic();
+  const navigate = useNavigate();
   const {
     register,
     handleSubmit,
     formState: { errors },
   } = useForm();
   const onSubmit = (data) => {
-    // console.log(data);
-    createUser(data.email, data.password)
-      .then((result) => {
-        const loggedUser = result.user;
-        console.log(loggedUser);
-      })
-      .catch((error) => {
-        console.log(error.message);
+    // password validation
+    if (data.password.length < 6) {
+      alert("Password must be at least 6 characters");
+      return;
+    } else if (!/^(?=.*[a-z])(?=.*[A-Z]).+$/.test(data.password)) {
+      alert("Password must have at least 1 uppercase & 1 uppercase leeter");
+      return;
+    }
+
+    const userInfo = {
+      name: data.name,
+      email: data.email,
+      photoURL: data.photoURL,
+      password: data.password,
+    };
+    axiosPublic.put("/users", userInfo);
+    createUser(data.email, data.password).then((result) => {
+      const loggedUser = result.user;
+      console.log(loggedUser);
+      Swal.fire({
+        position: "top-center",
+        icon: "success",
+        title: "User Created Successfully.",
+        showConfirmButton: false,
+        timer: 1000,
       });
+      navigate("/login");
+    });
   };
 
   return (
@@ -81,7 +106,12 @@ const Register = () => {
 
             <h2 className="mx-3 text-gray-400">Profile Photo</h2>
 
-            <input id="dropzone-file" type="file" className="hidden" />
+            <input
+              id="dropzone-file"
+              name="photoURL"
+              type="file"
+              className="hidden"
+            />
           </label>
 
           <div className="flex items-center mt-6">
@@ -112,7 +142,7 @@ const Register = () => {
             {errors.email && <span>User Email is required</span>}
           </div>
 
-          <div className="flex items-center mt-4">
+          <div className="flex items-center mt-4 relative">
             <span>
               <svg
                 xmlns="http://www.w3.org/2000/svg"
@@ -129,43 +159,20 @@ const Register = () => {
                 />
               </svg>
             </span>
-
             <input
-              type="password"
+              type={showPassword ? "text" : "password"}
               name="password"
               className="block w-full px-10 py-3 text-gray-700 bg-white border rounded-lg dark:bg-gray-900 dark:text-gray-300 dark:border-gray-600 focus:border-blue-400 dark:focus:border-blue-300 focus:ring-blue-300 focus:outline-none focus:ring focus:ring-opacity-40"
               placeholder="Password"
               {...register("password", { required: true })}
             />
-            {errors.password && <span>Password field is required</span>}
-          </div>
-
-          <div className=" flex items-center mt-4">
-            <span className="">
-              <svg
-                xmlns="http://www.w3.org/2000/svg"
-                className="w-6 h-6 mx-3 text-gray-300 dark:text-gray-500"
-                fill="none"
-                viewBox="0 0 24 24"
-                stroke="currentColor"
-                strokeWidth="2"
-              >
-                <path
-                  strokeLinecap="round"
-                  strokeLinejoin="round"
-                  d="M12 15v2m-6 4h12a2 2 0 002-2v-6a2 2 0 00-2-2H6a2 2 0 00-2 2v6a2 2 0 002 2zm10-10V7a4 4 0 00-8 0v4h8z"
-                />
-              </svg>
+            <span
+              className="absolute opacity-80 text-xl bottom-3 right-4"
+              onClick={() => setShowPassword(!showPassword)}
+            >
+              {showPassword ? <FaEyeSlash></FaEyeSlash> : <FaEye></FaEye>}
             </span>
-
-            <input
-              type="password"
-              name="confirm"
-              className="block w-full px-10 py-3 text-gray-700 bg-white border rounded-lg dark:bg-gray-900 dark:text-gray-300 dark:border-gray-600 focus:border-blue-400 dark:focus:border-blue-300 focus:ring-blue-300 focus:outline-none focus:ring focus:ring-opacity-40"
-              placeholder="Confirm Password"
-              {...register("confirm", { required: true })}
-            />
-            {errors.confirm && <span>Confirm Password is required</span>}
+            {errors.password && <span>Password field is required</span>}
           </div>
 
           <div className="mt-6">

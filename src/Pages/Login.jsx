@@ -1,26 +1,33 @@
 import React, { useContext } from "react";
-import { Link } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 import loginImage from "../../public/loginImage.jpg";
 import { FaGoogle } from "react-icons/fa";
 import { FaFacebook } from "react-icons/fa6";
 import { AuthContext } from "../AuthProviders/AuthProviders";
+import logo from "../../public/Logo.jpg";
+import Swal from "sweetalert2";
 
 const Login = () => {
   const { signIn } = useContext(AuthContext);
+  const navigate = useNavigate();
   const handleLogin = (event) => {
     event.preventDefault();
     const form = event.target;
     const email = form.email.value;
     const password = form.password.value;
     // console.log(email, password);
-    signIn(email, password)
-      .then((result) => {
-        const user = result.user;
-        console.log(user);
-      })
-      .catch((error) => {
-        console.log(error.message);
+    signIn(email, password).then((result) => {
+      const user = result.user;
+      console.log(user);
+      Swal.fire({
+        position: "top-center",
+        icon: "success",
+        title: "Welcome to Health Chamber Platform.",
+        showConfirmButton: false,
+        timer: 1000,
       });
+      navigate("/");
+    });
   };
   return (
     <div className="flex justify-center gap-10 w-full mx-auto overflow-hidden dark:bg-gray-800 lg:max-w-4xl">
@@ -29,26 +36,23 @@ const Login = () => {
         onSubmit={handleLogin}
         className="w-full px-3 py-4 md:px-8 lg:w-1/2 border-r-2 border-l-2 p-1 my-1"
       >
-        <div className="flex justify-center mx-auto">
-          <img
-            className="w-auto h-7 sm:h-8"
-            src="https://merakiui.com/images/logo.svg"
-          />
-        </div>
+        <img className="w-auto mx-auto h-7 sm:h-8" src={logo} />
 
-        <p className="mt-3 text-xl text-center text-gray-600 dark:text-gray-200">
+        <p className=" font-bold text-2xl text-center text-gray-600 dark:text-gray-200">
           Welcome back!
         </p>
 
-        <Link className="flex items-center justify-center mt-1 text-gray-600 border-2 rounded-lg dark:border-gray-700 dark:text-gray-200 hover:bg-gray-50 dark:hover:bg-gray-600">
-          <FaGoogle className="text-red-700"></FaGoogle>
+        <Link className="flex items-center justify-center bg-orange-600  mt-1 text-white hover:text-orange-500 border-2 rounded-lg dark:border-gray-700 dark:text-gray-200 hover:bg-gray-50 dark:hover:bg-gray-600">
+          <span>
+            <FaGoogle></FaGoogle>
+          </span>
 
-          <span className="w-5/6 px-4 py-3 font-bold text-center">
+          <span className="w-5/6   px-4 py-3 font-bold text-center">
             Login with Google
           </span>
         </Link>
-        <Link className="flex items-center justify-center mt-1 text-gray-600 border-2 rounded-lg dark:border-gray-700 dark:text-gray-200 hover:bg-gray-50 dark:hover:bg-gray-600">
-          <FaFacebook className="text-blue-700"></FaFacebook>
+        <Link className="flex items-center justify-center bg-blue-600  mt-1 text-white hover:text-blue-500  border-2 rounded-lg dark:border-gray-700 dark:text-gray-200 hover:bg-gray-50 dark:hover:bg-gray-600">
+          <FaFacebook></FaFacebook>
 
           <span className="w-5/6 px-4 py-3 font-bold text-center">
             Login with Facebook

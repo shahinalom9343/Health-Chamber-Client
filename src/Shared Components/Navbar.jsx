@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from "react";
+import React, { useContext, useEffect, useState } from "react";
 import usePrimaryButton from "../Hooks/usePrimaryButton";
 import {
   FaFacebook,
@@ -8,11 +8,23 @@ import {
   FaRegMoon,
 } from "react-icons/fa6";
 import { IoIosMail, IoLogoYoutube, IoMdSunny } from "react-icons/io";
-import { Link, NavLink } from "react-router-dom";
+import { Link, NavLink, useNavigate } from "react-router-dom";
 import useSecondaryButton from "../Hooks/useSecondaryButton";
+import { AuthContext } from "../AuthProviders/AuthProviders";
+import { ToastContainer, toast } from "react-toastify";
+import "react-toastify/dist/ReactToastify.css";
 
 const Navbar = () => {
+  const { user, logOut } = useContext(AuthContext);
   const [theme, setTheme] = useState(localStorage.getItem("theme"));
+  const navigate = useNavigate();
+  const signOut = () => {
+    logOut().then((result) => {
+      console.log(result);
+      toast("Logout Successfully!!!");
+      navigate("/login");
+    });
+  };
   useEffect(() => {
     localStorage.setItem("theme", theme);
     const localTheme = localStorage.getItem("theme");
@@ -74,6 +86,7 @@ const Navbar = () => {
   );
   const loginButton = usePrimaryButton("Login");
   const registerButton = useSecondaryButton("Register");
+  const logoutButton = useSecondaryButton("Logout");
   return (
     <div className="fixed min-w-full">
       {/* upper navbar for contact info */}
@@ -144,7 +157,7 @@ const Navbar = () => {
               {navItems}
             </ul>
           </div>
-          <Link to="/" className="btn btn-ghost text-xl">
+          <Link to="/" className="btn btn-ghost text-2xl">
             Health Chamber
           </Link>
         </div>
@@ -168,12 +181,17 @@ const Navbar = () => {
             {/* moon icon */}
             <FaRegMoon className="font-bold text-2xl swap-on" />
           </label>
-          <div className="flex gap-1">
-            <Link to="/login">{loginButton}</Link>
-            <Link to="/register">{registerButton}</Link>
-          </div>
+          {user ? (
+            <button onClick={signOut}>{logoutButton}</button>
+          ) : (
+            <div className="flex gap-1">
+              <Link to="/login">{loginButton}</Link>
+              <Link to="/register">{registerButton}</Link>
+            </div>
+          )}
         </div>
       </div>
+      <ToastContainer></ToastContainer>
     </div>
   );
 };
