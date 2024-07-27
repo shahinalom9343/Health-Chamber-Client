@@ -6,10 +6,14 @@ import { FaFacebook } from "react-icons/fa6";
 import { AuthContext } from "../AuthProviders/AuthProviders";
 import logo from "../../public/Logo.jpg";
 import Swal from "sweetalert2";
+import useAxiosPublic from "../Hooks/useAxiosPublic";
 
 const Login = () => {
-  const { signIn } = useContext(AuthContext);
+  const { signIn, googleSignIn, facebookSignIn } = useContext(AuthContext);
+  const axiosPublic = useAxiosPublic();
   const navigate = useNavigate();
+
+  // Email-password login
   const handleLogin = (event) => {
     event.preventDefault();
     const form = event.target;
@@ -19,6 +23,48 @@ const Login = () => {
     signIn(email, password).then((result) => {
       const user = result.user;
       console.log(user);
+      Swal.fire({
+        position: "top-center",
+        icon: "success",
+        title: "Welcome to Health Chamber Platform.",
+        showConfirmButton: false,
+        timer: 1000,
+      });
+      navigate("/");
+    });
+  };
+
+  // google Login
+  const handleGoogleSignIn = () => {
+    googleSignIn().then((result) => {
+      const userInfo = {
+        name: result.user?.displayName,
+        email: result.user?.email,
+        photoURL: result.user?.photoURL || result.user?.photourl,
+      };
+      // console.log(userInfo);
+      axiosPublic.put("/users", userInfo);
+      Swal.fire({
+        position: "top-center",
+        icon: "success",
+        title: "Welcome to Health Chamber Platform.",
+        showConfirmButton: false,
+        timer: 1000,
+      });
+      navigate("/");
+    });
+  };
+
+  // facebook login
+  const handleFacebookSignIn = () => {
+    facebookSignIn().then((result) => {
+      const userInfo = {
+        name: result.user?.displayName,
+        email: result.user?.email,
+        photoURL: result.user?.photoURL || result.user?.photourl,
+      };
+      // console.log(userInfo);
+      axiosPublic.put("/users", userInfo);
       Swal.fire({
         position: "top-center",
         icon: "success",
@@ -42,22 +88,28 @@ const Login = () => {
           Welcome back!
         </p>
 
-        <Link className="flex items-center justify-center bg-orange-600  mt-1 text-white hover:text-orange-500 border-2 rounded-lg dark:border-gray-700 dark:text-gray-200 hover:bg-gray-50 dark:hover:bg-gray-600">
+        <button
+          onClick={handleGoogleSignIn}
+          className="flex items-center w-full justify-center bg-orange-600  mt-1 text-white hover:text-orange-500 border-2 rounded-lg dark:border-gray-700 dark:text-gray-200 hover:bg-gray-50 dark:hover:bg-gray-600"
+        >
           <span>
             <FaGoogle></FaGoogle>
           </span>
 
-          <span className="w-5/6   px-4 py-3 font-bold text-center">
+          <span className="w-5/6 px-4 py-3 font-bold text-center">
             Login with Google
           </span>
-        </Link>
-        <Link className="flex items-center justify-center bg-blue-600  mt-1 text-white hover:text-blue-500  border-2 rounded-lg dark:border-gray-700 dark:text-gray-200 hover:bg-gray-50 dark:hover:bg-gray-600">
+        </button>
+        <button
+          onClick={handleFacebookSignIn}
+          className="flex items-center w-full justify-center bg-blue-600  mt-1 text-white hover:text-blue-500  border-2 rounded-lg dark:border-gray-700 dark:text-gray-200 hover:bg-gray-50 dark:hover:bg-gray-600"
+        >
           <FaFacebook></FaFacebook>
 
           <span className="w-5/6 px-4 py-3 font-bold text-center">
             Login with Facebook
           </span>
-        </Link>
+        </button>
 
         <div className="flex items-center justify-between mt-2">
           <span className="w-1/5 border-b dark:border-gray-600 lg:w-1/4"></span>

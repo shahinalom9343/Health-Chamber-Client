@@ -26,8 +26,13 @@ const Footer = () => {
                   <path d="M18.266 26.068l7.839-7.854 4.469 4.479c1.859 1.859 1.859 4.875 0 6.734l-1.104 1.104c-1.859 1.865-4.875 1.865-6.734 0zM30.563 2.531l-1.109-1.104c-1.859-1.859-4.875-1.859-6.734 0l-6.719 6.734-6.734-6.734c-1.859-1.859-4.875-1.859-6.734 0l-1.104 1.104c-1.859 1.859-1.859 4.875 0 6.734l6.734 6.734-6.734 6.734c-1.859 1.859-1.859 4.875 0 6.734l1.104 1.104c1.859 1.859 4.875 1.859 6.734 0l21.307-21.307c1.859-1.859 1.859-4.875 0-6.734z"></path>
                 </svg>
               </div>
-              <span className="self-center text-2xl font-semibold">
-                Health Chamber
+              <span className="self-center text-xl font-semibold">
+                <span className="text-violet-600">
+                  <span className="text-2xl">H</span>ealth
+                </span>{" "}
+                <span className="text-pink-700 -ml-1">
+                  <span className="text-2xl">C</span>hamber
+                </span>
               </span>
             </a>
           </div>
@@ -142,13 +147,13 @@ const Footer = () => {
         <div className="flex justify-between">
           <div className="flex flex-col items-center sm:flex-row gap-10">
             <div className="flex gap-3">
-              <div className="text-blue-700 hover:bg-violet-700 hover:text-white text-2xl bg-none border-2 p-1 rounded-full">
+              <div className="text-blue-300 hover:bg-violet-700 hover:text-white text-2xl bg-none p-1 rounded-full">
                 <FaFacebook />
               </div>
-              <div className="text-red-700 hover:bg-cyan-700 hover:text-white text-2xl bg-none border-2 p-1 rounded-full">
+              <div className="text-red-700 hover:bg-cyan-700 hover:text-white text-2xl bg-none  p-1 rounded-full">
                 <IoLogoYoutube />
               </div>
-              <div className="text-blue-400 hover:bg-pink-700 hover:text-white text-2xl bg-none border-2 p-1 rounded-full">
+              <div className="text-sky-300 hover:bg-pink-700 hover:text-white text-2xl bg-none  p-1 rounded-full">
                 <FaLinkedin />
               </div>
             </div>

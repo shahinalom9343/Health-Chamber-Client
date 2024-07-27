@@ -6,6 +6,9 @@ import About from "../Pages/About";
 import Contact from "../Pages/Contact";
 import Login from "../Pages/Login";
 import Register from "../Pages/Register";
+import Patients from "../Pages/Patients";
+import PrivateRoutes from "./PrivateRoutes";
+import AllUsers from "../Dashboard/Admin/AllUsers";
 
 const router = createBrowserRouter([
   {
@@ -20,6 +23,18 @@ const router = createBrowserRouter([
       {
         path: "/about",
         element: <About></About>,
+      },
+      {
+        path: "/patients",
+        element: (
+          <PrivateRoutes>
+            <Patients></Patients>
+          </PrivateRoutes>
+        ),
+      },
+      {
+        path: "/users",
+        element: <AllUsers></AllUsers>,
       },
       {
         path: "/contact",

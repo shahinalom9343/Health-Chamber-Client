@@ -66,7 +66,7 @@ const Navbar = () => {
       </NavLink>
       <NavLink
         className="mx-4 text-sm leading-5  transition-colors duration-300 transform  hover:text-blue-500  hover:border-b-4 hover:border-blue-400 md:my-0"
-        to="/"
+        to="/patients"
       >
         Patients & Visitors
       </NavLink>
@@ -157,8 +157,13 @@ const Navbar = () => {
               {navItems}
             </ul>
           </div>
-          <Link to="/" className="btn btn-ghost text-2xl">
-            Health Chamber
+          <Link to="/" className="btn btn-ghost text-xl">
+            <span className="text-pink-600">
+              <span className="text-2xl">H</span>ealth
+            </span>{" "}
+            <span className="text-violet-700 -ml-1">
+              <span className="text-2xl">C</span>hamber
+            </span>
           </Link>
         </div>
         <div className="navbar-center h-full hidden lg:flex">
