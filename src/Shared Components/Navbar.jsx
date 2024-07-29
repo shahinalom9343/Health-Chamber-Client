@@ -66,9 +66,9 @@ const Navbar = () => {
       </NavLink>
       <NavLink
         className="mx-4 text-sm leading-5  transition-colors duration-300 transform  hover:text-blue-500  hover:border-b-4 hover:border-blue-400 md:my-0"
-        to="/patients"
+        to="/dashboard"
       >
-        Patients & Visitors
+        Dashboard
       </NavLink>
       <NavLink
         className="mx-4 text-sm leading-5  transition-colors duration-300 transform  hover:text-blue-500  hover:border-b-4 hover:border-blue-400 md:my-0"

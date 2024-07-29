@@ -4,7 +4,7 @@ import { useQuery } from "@tanstack/react-query";
 
 const AllUsers = () => {
   const axiosSecure = useAxiosSecure();
-  const { data: users = [], refetch } = useQuery({
+  const { data: users = [] } = useQuery({
     queryKey: ["users"],
     queryFn: async () => {
       const result = await axiosSecure.get("/users", {
@@ -18,8 +18,8 @@ const AllUsers = () => {
   });
   return (
     <div className="container p-2 mx-auto sm:p-4 dark:text-gray-800">
-      <h2 className="mb-4 text-2xl font-semibold leading-tight">
-        All Logged In Users
+      <h2 className="mb-4 text-xl font-normal text-center leading-tight">
+        Total Logged In Users:{users.length}
       </h2>
       <div className="overflow-x-auto">
         <table className="min-w-full text-xs">

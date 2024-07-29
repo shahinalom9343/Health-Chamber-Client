@@ -6,7 +6,7 @@ const PrivateRoutes = ({ children }) => {
   const { user, loading } = useContext(AuthContext);
   if (loading) {
     return (
-      <div className="w-26 h-26 border-4 border-dashed rounded-full animate-spin dark:border-violet-600"></div>
+      <div className="w-16 h-16 mx-auto my-4 md:my-10 lg:my-20 border-4 border-dashed rounded-full animate-spin dark:border-violet-600"></div>
     );
   }
   if (user) {

@@ -30,7 +30,7 @@ const Footer = () => {
                 <span className="text-violet-600">
                   <span className="text-2xl">H</span>ealth
                 </span>{" "}
-                <span className="text-pink-700 -ml-1">
+                <span className="text-pink-700 ml-1">
                   <span className="text-2xl">C</span>hamber
                 </span>
               </span>

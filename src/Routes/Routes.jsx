@@ -9,6 +9,8 @@ import Register from "../Pages/Register";
 import Patients from "../Pages/Patients";
 import PrivateRoutes from "./PrivateRoutes";
 import AllUsers from "../Dashboard/Admin/AllUsers";
+import Dashboard from "../Dashboard/Dashboard";
+import AdminHome from "../Dashboard/Admin/AdminHome";
 
 const router = createBrowserRouter([
   {
@@ -25,18 +27,6 @@ const router = createBrowserRouter([
         element: <About></About>,
       },
       {
-        path: "/patients",
-        element: (
-          <PrivateRoutes>
-            <Patients></Patients>
-          </PrivateRoutes>
-        ),
-      },
-      {
-        path: "/users",
-        element: <AllUsers></AllUsers>,
-      },
-      {
         path: "/contact",
         element: <Contact></Contact>,
       },
@@ -47,6 +37,29 @@ const router = createBrowserRouter([
       {
         path: "/register",
         element: <Register></Register>,
+      },
+      {
+        path: "/dashboard",
+        element: (
+          <PrivateRoutes>
+            <Dashboard></Dashboard>
+          </PrivateRoutes>
+        ),
+        children: [
+          {
+            path: "/dashboard/adminHome",
+            element: <AdminHome></AdminHome>,
+          },
+
+          {
+            path: "/dashboard/users",
+            element: <AllUsers></AllUsers>,
+          },
+          {
+            path: "/dashboard/patients",
+            element: <Patients></Patients>,
+          },
+        ],
       },
     ],
   },
