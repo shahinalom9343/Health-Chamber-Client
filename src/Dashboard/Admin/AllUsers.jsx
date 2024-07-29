@@ -56,8 +56,14 @@ const AllUsers = () => {
                 <td className="p-3">
                   <p>{user.email}</p>
                 </td>
-                <td className="p-3">
-                  <p>{user.photoURL}</p>
+                <td>
+                  <p className="p-3">
+                    <img
+                      className="rounded-full h-12 w-12 text-center"
+                      src={user.photoURL}
+                      alt="User Photo"
+                    />
+                  </p>
                 </td>
                 <td className="p-3 text-right">
                   <p>{user.role}</p>

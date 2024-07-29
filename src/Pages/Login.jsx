@@ -28,7 +28,7 @@ const Login = () => {
         icon: "success",
         title: "Welcome to Health Chamber Platform.",
         showConfirmButton: false,
-        timer: 1000,
+        timer: 1500,
       });
       navigate("/");
     });
@@ -49,7 +49,7 @@ const Login = () => {
         icon: "success",
         title: "Welcome to Health Chamber Platform.",
         showConfirmButton: false,
-        timer: 1000,
+        timer: 1500,
       });
       navigate("/");
     });
@@ -70,7 +70,7 @@ const Login = () => {
         icon: "success",
         title: "Welcome to Health Chamber Platform.",
         showConfirmButton: false,
-        timer: 1000,
+        timer: 1500,
       });
       navigate("/");
     });
