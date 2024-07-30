@@ -11,6 +11,7 @@ import PrivateRoutes from "./PrivateRoutes";
 import AllUsers from "../Dashboard/Admin/AllUsers";
 import Dashboard from "../Dashboard/Dashboard";
 import AdminHome from "../Dashboard/Admin/AdminHome";
+import Gallery from "../Pages/Gallery";
 
 const router = createBrowserRouter([
   {
@@ -29,6 +30,10 @@ const router = createBrowserRouter([
       {
         path: "/contact",
         element: <Contact></Contact>,
+      },
+      {
+        path: "/gallery",
+        element: <Gallery></Gallery>,
       },
       {
         path: "/login",

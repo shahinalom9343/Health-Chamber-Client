@@ -10,9 +10,9 @@ const Dashboard = () => {
   const [role] = useRole();
   return (
     <div>
-      <div className="grid grid-cols-1 md:grid-cols-9 gap-1 md:gap-2  py-2">
+      <div className="grid grid-cols-1 md:grid-cols-9 gap-1 md:gap-2 py-2">
         {/* this is left side menubar */}
-        <div className="col-span-1 md:col-span-2 bg-violet-50 font-medium">
+        <div className="col-span-1 md:col-span-2 bg-violet-50 font-medium min-h-screen">
           <div>
             <ul className="menu p-5 font-medium text-lg">
               {role === "admin" && (

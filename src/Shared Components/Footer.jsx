@@ -37,7 +37,7 @@ const Footer = () => {
             </a>
           </div>
 
-          <div className="col-span-1 md:pb-0 md:col-span-2 lg:col-span-4">
+          <div className="col-span-1 md:pb-0 md:col-span-2 lg:col-span-4 ">
             <p className="pb-1 text-xl font-medium text-center md:text-left">
               Quick Links to Explore More
             </p>

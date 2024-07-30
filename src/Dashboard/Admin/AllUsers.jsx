@@ -7,11 +7,7 @@ const AllUsers = () => {
   const { data: users = [] } = useQuery({
     queryKey: ["users"],
     queryFn: async () => {
-      const result = await axiosSecure.get("/users", {
-        headers: {
-          authorization: `Bearer ${localStorage.getItem("access-token")}`,
-        },
-      });
+      const result = await axiosSecure.get("/users");
 
       return result.data;
     },
@@ -31,7 +27,7 @@ const AllUsers = () => {
             <col />
             <col className="w-24" />
           </colgroup>
-          <thead className="dark:bg-gray-300">
+          <thead className="dark:bg-gray-300 bg-lime-50 text-base">
             <tr className="text-left">
               <th className="p-3">Nos.</th>
               <th className="p-3">Name</th>
@@ -45,7 +41,7 @@ const AllUsers = () => {
             {users.map((user, index) => (
               <tr
                 key={user._id}
-                className="border-b border-opacity-20 dark:border-gray-300 dark:bg-gray-50"
+                className="border-b border-opacity-20 dark:border-gray-300 bg-blue-50 dark:bg-slate-950"
               >
                 <td className="p-3">
                   <p>{index + 1}</p>
