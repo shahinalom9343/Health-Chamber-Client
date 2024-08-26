@@ -12,6 +12,7 @@ import AllUsers from "../Dashboard/Admin/AllUsers";
 import Dashboard from "../Dashboard/Dashboard";
 import AdminHome from "../Dashboard/Admin/AdminHome";
 import Gallery from "../Pages/Gallery";
+import Doctors from "../Pages/Doctors";
 
 const router = createBrowserRouter([
   {
@@ -28,13 +29,18 @@ const router = createBrowserRouter([
         element: <About></About>,
       },
       {
-        path: "/contact",
-        element: <Contact></Contact>,
+        path: "/doctors",
+        element: <Doctors></Doctors>,
       },
       {
         path: "/gallery",
         element: <Gallery></Gallery>,
       },
+      {
+        path: "/contact",
+        element: <Contact></Contact>,
+      },
+
       {
         path: "/login",
         element: <Login></Login>,

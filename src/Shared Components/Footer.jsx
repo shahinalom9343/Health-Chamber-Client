@@ -6,7 +6,7 @@ import GotoTop from "./GotoTop";
 
 const Footer = () => {
   return (
-    <footer className="bg-slate-700 text-white opacity-85">
+    <footer className="bg-slate-700 text-white opacity-85 mt-36">
       <div className="container px-6 py-8 mx-auto">
         {/* upper footer */}
         <div className="grid grid-cols-1 md:grid-cols-6 lg:grid-cols-12">

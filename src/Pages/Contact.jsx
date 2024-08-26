@@ -7,7 +7,7 @@ const Contact = () => {
       <div>
         <img
           src="https://i.ibb.co/TktdgmS/img.jpg"
-          className="w-full h-56"
+          className="w-10/12 mx-auto h-56"
           alt="Health Chamber Contact-Info Image"
         />
       </div>
@@ -16,7 +16,7 @@ const Contact = () => {
       <div>
         <section>
           <div className="container px-6 py-12 mx-auto">
-            <div className="lg:flex lg:items-center lg:ml-24">
+            <div className="lg:flex lg:justify-around lg:items-center lg:ml-24">
               {/* contact info */}
               <div className="lg:w-1/2 lg:mx-6 ml-4">
                 <h1 className="text-2xl font-semibold dark:hover:text-blue-400 text-gray-600 transition-colors duration-300  hover:text-blue-500 lg:text-3xl">
@@ -176,7 +176,7 @@ const Contact = () => {
               </div>
               {/* contact form */}
               <div className="lg:w-1/2 lg:mx-6">
-                <div className="w-full px-8 py-10 mx-auto overflow-hidden  rounded-lg shadow-2xl  lg:max-w-xl shadow-gray-300/50 dark:shadow-black/50">
+                <div className="w-11/12 px-8 py-10 mx-auto overflow-hidden  rounded-lg shadow-2xl  lg:max-w-xl shadow-gray-300/50 dark:shadow-black/50">
                   <h1 className="dark:text-gray-400 dark:hover:text-blue-400 text-gray-600 transition-colors duration-300 hover:text-blue-500 text-xl">
                     Help Us With Your Details
                   </h1>

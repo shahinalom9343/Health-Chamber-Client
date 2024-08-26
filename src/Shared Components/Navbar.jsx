@@ -38,52 +38,6 @@ const Navbar = () => {
       setTheme("light");
     }
   };
-  const navItems = (
-    <>
-      <NavLink
-        className="mx-4 text-sm leading-5  transition-colors duration-300 transform  hover:text-blue-500  hover:border-b-4 hover:border-blue-400 md:my-0"
-        to="/about"
-      >
-        About Us
-      </NavLink>
-      <NavLink
-        className="mx-4 text-sm leading-5  transition-colors duration-300 transform  hover:text-blue-500  hover:border-b-4 hover:border-blue-400 md:my-0"
-        to="/about"
-      >
-        Center of Excellence
-      </NavLink>
-      <NavLink
-        className="mx-4 text-sm leading-5  transition-colors duration-300 transform  hover:text-blue-500  hover:border-b-4 hover:border-blue-400 md:my-0"
-        to="/about"
-      >
-        Departments
-      </NavLink>
-      <NavLink
-        className="mx-4 text-sm leading-5  transition-colors duration-300 transform  hover:text-blue-500  hover:border-b-4 hover:border-blue-400 md:my-0"
-        to="/about"
-      >
-        Find Doctors
-      </NavLink>
-      <NavLink
-        className="mx-4 text-sm leading-5  transition-colors duration-300 transform  hover:text-blue-500  hover:border-b-4 hover:border-blue-400 md:my-0"
-        to="/dashboard"
-      >
-        Dashboard
-      </NavLink>
-      <NavLink
-        className="mx-4 text-sm leading-5  transition-colors duration-300 transform  hover:text-blue-500  hover:border-b-4 hover:border-blue-400 md:my-0"
-        to="/gallery"
-      >
-        Gallery
-      </NavLink>
-      <NavLink
-        className="mx-4 text-sm leading-5  transition-colors duration-300 transform  hover:text-blue-500  hover:border-b-4 hover:border-blue-400 md:my-0"
-        to="/contact"
-      >
-        Contact
-      </NavLink>
-    </>
-  );
   const loginButton = usePrimaryButton("Login");
   const registerButton = useSecondaryButton("Register");
   const logoutButton = useSecondaryButton("Logout");
@@ -152,9 +106,50 @@ const Navbar = () => {
             </div>
             <ul
               tabIndex={0}
-              className="menu menu-sm dropdown-content py-3 mt-3 -mx-3 overflow-y-auto whitespace-nowrap scroll-hidden"
+              className="menu menu-sm dropdown-content bg-slate-400 text-white z-10 py-3 mt-3 -mx-3 overflow-y-auto whitespace-nowrap scroll-hidden"
             >
-              {navItems}
+              <NavLink
+                className="mx-4 text-sm leading-5  transition-colors duration-300 transform  hover:text-blue-500  hover:border-b-4 hover:border-blue-400 md:my-0"
+                to="/about"
+              >
+                About Us
+              </NavLink>
+              <NavLink
+                className="mx-4 text-sm leading-5  transition-colors duration-300 transform  hover:text-blue-500  hover:border-b-4 hover:border-blue-400 md:my-0"
+                to="/about"
+              >
+                Center of Excellence
+              </NavLink>
+              <NavLink
+                className="mx-4 text-sm leading-5  transition-colors duration-300 transform  hover:text-blue-500  hover:border-b-4 hover:border-blue-400 md:my-0"
+                to="/about"
+              >
+                Departments
+              </NavLink>
+              <NavLink
+                className="mx-4 text-sm leading-5  transition-colors duration-300 transform  hover:text-blue-500  hover:border-b-4 hover:border-blue-400 md:my-0"
+                to="/doctors"
+              >
+                Find Doctors
+              </NavLink>
+              <NavLink
+                className="mx-4 text-sm leading-5  transition-colors duration-300 transform  hover:text-blue-500  hover:border-b-4 hover:border-blue-400 md:my-0"
+                to="/dashboard"
+              >
+                Dashboard
+              </NavLink>
+              <NavLink
+                className="mx-4 text-sm leading-5  transition-colors duration-300 transform  hover:text-blue-500  hover:border-b-4 hover:border-blue-400 md:my-0"
+                to="/gallery"
+              >
+                Gallery
+              </NavLink>
+              <NavLink
+                className="mx-4 text-sm leading-5  transition-colors duration-300 transform  hover:text-blue-500  hover:border-b-4 hover:border-blue-400 md:my-0"
+                to="/contact"
+              >
+                Contact
+              </NavLink>
             </ul>
           </div>
           <Link to="/" className="btn btn-ghost text-xl">
@@ -167,11 +162,61 @@ const Navbar = () => {
           </Link>
         </div>
         <div className="navbar-center h-full hidden lg:flex">
-          <ul className="py-3 mt-3 -mx-3 overflow-y-auto whitespace-nowrap scroll-hidden">
-            {navItems}
+          <ul className=" py-3 mt-3 -mx-3 overflow-y-auto whitespace-nowrap scroll-hidden">
+            <NavLink
+              className="mx-4 text-sm leading-5  transition-colors duration-300 transform  hover:text-blue-500  hover:border-b-4 hover:border-blue-400 md:my-0"
+              to="/about"
+            >
+              About Us
+            </NavLink>
+            <NavLink
+              className="mx-4 text-sm leading-5  transition-colors duration-300 transform  hover:text-blue-500  hover:border-b-4 hover:border-blue-400 md:my-0"
+              to="/about"
+            >
+              Center of Excellence
+            </NavLink>
+            <NavLink
+              className="mx-4 text-sm leading-5  transition-colors duration-300 transform  hover:text-blue-500  hover:border-b-4 hover:border-blue-400 md:my-0"
+              to="/about"
+            >
+              Departments
+            </NavLink>
+            <NavLink
+              className="mx-4 text-sm leading-5  transition-colors duration-300 transform  hover:text-blue-500  hover:border-b-4 hover:border-blue-400 md:my-0"
+              to="/doctors"
+            >
+              Find Doctors
+            </NavLink>
+            <NavLink
+              className="mx-4 text-sm leading-5  transition-colors duration-300 transform  hover:text-blue-500  hover:border-b-4 hover:border-blue-400 md:my-0"
+              to="/dashboard"
+            >
+              Dashboard
+            </NavLink>
+            <NavLink
+              className="mx-4 text-sm leading-5  transition-colors duration-300 transform  hover:text-blue-500  hover:border-b-4 hover:border-blue-400 md:my-0"
+              to="/gallery"
+            >
+              Gallery
+            </NavLink>
+            <NavLink
+              className="mx-4 text-sm leading-5  transition-colors duration-300 transform  hover:text-blue-500  hover:border-b-4 hover:border-blue-400 md:my-0"
+              to="/contact"
+            >
+              Contact
+            </NavLink>
           </ul>
         </div>
         <div className="navbar-end">
+          {user && (
+            <div>
+              <img
+                src={user.photoURL}
+                className="h-12 w-14 rounded-full mr-1"
+                alt=""
+              />
+            </div>
+          )}
           {/* Theme controller button */}
           <label className="swap swap-rotate mr-1">
             <input
