@@ -13,6 +13,7 @@ import useSecondaryButton from "../Hooks/useSecondaryButton";
 import { AuthContext } from "../AuthProviders/AuthProviders";
 import { ToastContainer, toast } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
+import "./styles.css";
 
 const Navbar = () => {
   const { user, logOut } = useContext(AuthContext);
@@ -161,7 +162,7 @@ const Navbar = () => {
             </span>
           </Link>
         </div>
-        <div className="navbar-center h-full hidden lg:flex">
+        <div id="menu" className="navbar-center h-full hidden lg:flex">
           <ul className=" py-3 mt-3 -mx-3 overflow-y-auto whitespace-nowrap scroll-hidden">
             <NavLink
               className="mx-4 text-sm leading-5  transition-colors duration-300 transform  hover:text-blue-500  hover:border-b-4 hover:border-blue-400 md:my-0"
@@ -170,10 +171,34 @@ const Navbar = () => {
               About Us
             </NavLink>
             <NavLink
-              className="mx-4 text-sm leading-5  transition-colors duration-300 transform  hover:text-blue-500  hover:border-b-4 hover:border-blue-400 md:my-0"
-              to="/about"
+              id="center"
+              className="mx-4 text-sm leading-5 transition-colors duration-300 transform  hover:text-blue-500  hover:border-b-4 hover:border-blue-400 md:my-0"
             >
               Center of Excellence
+              <ul
+                className="bg-gray-500 text-white p-2 rounded-md"
+                id="submenu"
+              >
+                <li className="hover:bg-sky-600 hover:text-white p-2">
+                  Health Chamber Emergency center
+                </li>{" "}
+                <hr />
+                <li className="hover:bg-sky-600 hover:text-white p-2">
+                  Health Chamber Eye center
+                </li>{" "}
+                <hr />
+                <li className="hover:bg-sky-600 hover:text-white p-2">
+                  Health Chamber Cancer center
+                </li>{" "}
+                <hr />
+                <li className="hover:bg-sky-600 hover:text-white p-2">
+                  Health Chamber Surgery center
+                </li>{" "}
+                <hr />
+                <li className="hover:bg-sky-600 hover:text-white p-2">
+                  Health Chamber Neurocience center
+                </li>
+              </ul>
             </NavLink>
             <NavLink
               className="mx-4 text-sm leading-5  transition-colors duration-300 transform  hover:text-blue-500  hover:border-b-4 hover:border-blue-400 md:my-0"

@@ -1,0 +1,18 @@
+#menu {
+  position: relative;
+}
+
+#menu #submenu {
+  position: absolute;
+  left: 96px;
+  top: 58px;
+  z-index: 1;
+  visibility: hidden;
+  opacity: 0;
+}
+#menu #center:hover > #submenu {
+  opacity: 1;
+  transform: none;
+  visibility: visible;
+  transition: all 0.5s ease;
+}
