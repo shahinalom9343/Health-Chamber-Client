@@ -13,6 +13,10 @@ import Dashboard from "../Dashboard/Dashboard";
 import AdminHome from "../Dashboard/Admin/AdminHome";
 import Gallery from "../Pages/Gallery";
 import Doctors from "../Pages/Doctors";
+import EmergencyCenter from "../Pages/Center of excellence/EmergencyCenter";
+import EyeCenter from "../Pages/Center of excellence/EyeCenter";
+import CancerCenter from "../Pages/Center of excellence/CancerCenter";
+import Departments from "../Pages/Departments";
 
 const router = createBrowserRouter([
   {
@@ -29,8 +33,24 @@ const router = createBrowserRouter([
         element: <About></About>,
       },
       {
+        path: "/excellence/emergencyCenter",
+        element: <EmergencyCenter></EmergencyCenter>,
+      },
+      {
+        path: "/excellence/eyeCenter",
+        element: <EyeCenter></EyeCenter>,
+      },
+      {
+        path: "/excellence/cancerCenter",
+        element: <CancerCenter></CancerCenter>,
+      },
+      {
         path: "/doctors",
         element: <Doctors></Doctors>,
+      },
+      {
+        path: "/departments",
+        element: <Departments></Departments>,
       },
       {
         path: "/gallery",

@@ -179,30 +179,39 @@ const Navbar = () => {
                 className="bg-gray-500 text-white p-2 rounded-md"
                 id="submenu"
               >
-                <li className="hover:bg-sky-600 hover:text-white p-2">
+                <NavLink
+                  to="/excellence/emergencyCenter"
+                  className="hover:bg-sky-600 hover:text-white m-4"
+                >
                   Health Chamber Emergency center
-                </li>{" "}
+                </NavLink>
                 <hr />
-                <li className="hover:bg-sky-600 hover:text-white p-2">
+                <NavLink
+                  to="/excellence/eyeCenter"
+                  className="hover:bg-sky-600 hover:text-white m-4"
+                >
                   Health Chamber Eye center
-                </li>{" "}
+                </NavLink>{" "}
                 <hr />
-                <li className="hover:bg-sky-600 hover:text-white p-2">
+                <NavLink
+                  to="/excellence/cancerCenter"
+                  className="hover:bg-sky-600 hover:text-white m-4 space-y-3"
+                >
                   Health Chamber Cancer center
-                </li>{" "}
+                </NavLink>{" "}
                 <hr />
-                <li className="hover:bg-sky-600 hover:text-white p-2">
+                <NavLink className="hover:bg-sky-600 hover:text-white m-4">
                   Health Chamber Surgery center
-                </li>{" "}
+                </NavLink>{" "}
                 <hr />
-                <li className="hover:bg-sky-600 hover:text-white p-2">
+                <NavLink className="hover:bg-sky-600 hover:text-white m-4">
                   Health Chamber Neurocience center
-                </li>
+                </NavLink>
               </ul>
             </NavLink>
             <NavLink
               className="mx-4 text-sm leading-5  transition-colors duration-300 transform  hover:text-blue-500  hover:border-b-4 hover:border-blue-400 md:my-0"
-              to="/about"
+              to="/departments"
             >
               Departments
             </NavLink>
