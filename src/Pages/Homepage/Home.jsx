@@ -1,8 +1,13 @@
 import React from "react";
+import { Helmet } from "react-helmet";
 
 const Home = () => {
   return (
     <section className="dark:bg-gray-100 dark:text-gray-800">
+      <Helmet>
+        <title>Health Chamber | Home</title>
+      </Helmet>
+      ;
       <div className="container mx-auto flex flex-col p-6">
         <h2 className="py-4 text-3xl font-bold text-center">Temporibus elit</h2>
         <div className="divide-y dark:divide-gray-300">

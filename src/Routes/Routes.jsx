@@ -6,7 +6,6 @@ import About from "../Pages/About";
 import Contact from "../Pages/Contact";
 import Login from "../Pages/Login";
 import Register from "../Pages/Register";
-import Patients from "../Pages/Patients";
 import PrivateRoutes from "./PrivateRoutes";
 import AllUsers from "../Dashboard/Admin/AllUsers";
 import Dashboard from "../Dashboard/Dashboard";
@@ -85,10 +84,6 @@ const router = createBrowserRouter([
           {
             path: "/dashboard/users",
             element: <AllUsers></AllUsers>,
-          },
-          {
-            path: "/dashboard/patients",
-            element: <Patients></Patients>,
           },
         ],
       },

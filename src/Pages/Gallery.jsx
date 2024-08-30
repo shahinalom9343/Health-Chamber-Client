@@ -1,8 +1,12 @@
 import React from "react";
+import { Helmet } from "react-helmet";
 
 const Gallery = () => {
   return (
     <section className="py-6 dark:bg-gray-100 dark:text-gray-900">
+      <Helmet>
+        <title>Health Chamber | Gallery</title>
+      </Helmet>
       <div className="container grid grid-cols-2 gap-4 p-4 mx-auto md:grid-cols-4">
         <img
           src="https://i.ibb.co/YBy0TSR/1.jpg"

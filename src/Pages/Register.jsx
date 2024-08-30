@@ -5,6 +5,7 @@ import { AuthContext } from "../AuthProviders/AuthProviders";
 import Swal from "sweetalert2";
 import useAxiosPublic from "../Hooks/useAxiosPublic";
 import { FaEye, FaEyeSlash } from "react-icons/fa";
+import { Helmet } from "react-helmet";
 
 const Register = () => {
   const { createUser } = useContext(AuthContext);
@@ -49,6 +50,9 @@ const Register = () => {
 
   return (
     <section className="bg-white dark:bg-gray-900">
+      <Helmet>
+        <title>Health Chamber | Registration</title>
+      </Helmet>
       <div className="container  flex items-center justify-center px-6 mx-auto">
         <form
           className="w-full max-w-lg border-2 p-4 my-1 rounded-lg shadow-md"

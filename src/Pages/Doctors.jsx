@@ -2,6 +2,7 @@ import { useQuery } from "@tanstack/react-query";
 import React from "react";
 import useAxiosPublic from "../Hooks/useAxiosPublic";
 import { ColorRing } from "react-loader-spinner";
+import { Helmet } from "react-helmet";
 
 const Doctors = () => {
   const axiosSecure = useAxiosPublic();
@@ -28,7 +29,10 @@ const Doctors = () => {
     );
   }
   return (
-    <div>
+    <div className="my-2">
+      <Helmet>
+        <title>Health Chamber | Doctors</title>
+      </Helmet>
       {/* doctor list and search section */}
       <div>
         <h2 className="text-5xl mt-2 mb-3 md:mt-6 lg:mt-10 text-center font-extrabold">

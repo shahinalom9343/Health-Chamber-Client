@@ -107,7 +107,7 @@ const Navbar = () => {
             </div>
             <ul
               tabIndex={0}
-              className="menu menu-sm dropdown-content bg-slate-400 text-white z-10 py-3 mt-3 -mx-3 overflow-y-auto whitespace-nowrap scroll-hidden"
+              className="menu menu-sm dropdown-content bg-slate-400 text-white z-10 mt-3 -mx-3 overflow-y-auto whitespace-nowrap scroll-hidden"
             >
               <NavLink
                 className="mx-4 text-sm leading-5  transition-colors duration-300 transform  hover:text-blue-500  hover:border-b-4 hover:border-blue-400 md:my-0"
@@ -116,10 +116,43 @@ const Navbar = () => {
                 About Us
               </NavLink>
               <NavLink
-                className="mx-4 text-sm leading-5  transition-colors duration-300 transform  hover:text-blue-500  hover:border-b-4 hover:border-blue-400 md:my-0"
-                to="/about"
+                id="center"
+                className="mx-4  text-sm leading-5 transition-colors duration-300 transform  hover:text-blue-500  hover:border-b-4 hover:border-blue-400 md:my-0"
               >
                 Center of Excellence
+                <ul
+                  className="bg-gray-500 text-white p-2 rounded-md"
+                  id="submenu"
+                >
+                  <NavLink
+                    to="/excellence/emergencyCenter"
+                    className="hover:bg-sky-600 hover:text-white m-4"
+                  >
+                    Health Chamber Emergency center
+                  </NavLink>
+                  <hr />
+                  <NavLink
+                    to="/excellence/eyeCenter"
+                    className="hover:bg-sky-600 hover:text-white m-4"
+                  >
+                    Health Chamber Eye center
+                  </NavLink>{" "}
+                  <hr />
+                  <NavLink
+                    to="/excellence/cancerCenter"
+                    className="hover:bg-sky-600 hover:text-white m-4 space-y-3"
+                  >
+                    Health Chamber Cancer center
+                  </NavLink>{" "}
+                  <hr />
+                  <NavLink className="hover:bg-sky-600 hover:text-white m-4">
+                    Health Chamber Surgery center
+                  </NavLink>{" "}
+                  <hr />
+                  <NavLink className="hover:bg-sky-600 hover:text-white m-4">
+                    Health Chamber Neurocience center
+                  </NavLink>
+                </ul>
               </NavLink>
               <NavLink
                 className="mx-4 text-sm leading-5  transition-colors duration-300 transform  hover:text-blue-500  hover:border-b-4 hover:border-blue-400 md:my-0"
@@ -162,8 +195,8 @@ const Navbar = () => {
             </span>
           </Link>
         </div>
-        <div id="menu" className="navbar-center h-full hidden lg:flex">
-          <ul className=" py-3 mt-3 -mx-3 overflow-y-auto whitespace-nowrap scroll-hidden">
+        <div id="menu" className="navbar-center hidden lg:flex">
+          <ul className="py-3 mt-3 h-full -mx-3 overflow-y-auto whitespace-nowrap scroll-hidden">
             <NavLink
               className="mx-4 text-sm leading-5  transition-colors duration-300 transform  hover:text-blue-500  hover:border-b-4 hover:border-blue-400 md:my-0"
               to="/about"
@@ -172,7 +205,7 @@ const Navbar = () => {
             </NavLink>
             <NavLink
               id="center"
-              className="mx-4 text-sm leading-5 transition-colors duration-300 transform  hover:text-blue-500  hover:border-b-4 hover:border-blue-400 md:my-0"
+              className="mx-4  min-h-full text-sm leading-5 transition-colors duration-300 transform  hover:text-blue-500  hover:border-b-4 hover:border-blue-400"
             >
               Center of Excellence
               <ul

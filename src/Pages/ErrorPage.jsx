@@ -2,10 +2,14 @@ import React from "react";
 import { Link } from "react-router-dom";
 import errorImg from "../../public/ErrorImage.jpg";
 import { FaChevronLeft } from "react-icons/fa6";
+import { Helmet } from "react-helmet";
 
 const ErrorPage = () => {
   return (
     <section className="flex items-center h-full sm:p-16 dark:bg-gray-50 dark:text-gray-800">
+      <Helmet>
+        <title>Health Chamber | ErrorPage</title>
+      </Helmet>
       <div className="container flex flex-col items-center justify-center px-5 mx-auto my-4 space-y-4 text-center">
         <img src={errorImg} alt="Error Page Image" />
         <p className="text-2xl font-semibold md:text-3xl">

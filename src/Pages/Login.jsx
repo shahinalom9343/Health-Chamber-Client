@@ -7,6 +7,7 @@ import { AuthContext } from "../AuthProviders/AuthProviders";
 import logo from "../../public/Logo.jpg";
 import Swal from "sweetalert2";
 import useAxiosPublic from "../Hooks/useAxiosPublic";
+import { Helmet } from "react-helmet";
 
 const Login = () => {
   const { signIn, googleSignIn, facebookSignIn } = useContext(AuthContext);
@@ -51,7 +52,7 @@ const Login = () => {
         showConfirmButton: false,
         timer: 1500,
       });
-      navigate("/");
+      navigate("/dashboard");
     });
   };
 
@@ -77,6 +78,9 @@ const Login = () => {
   };
   return (
     <div className="flex justify-center gap-10 w-full mx-auto overflow-hidden dark:bg-gray-800 lg:max-w-4xl">
+      <Helmet>
+        <title>Health Chamber | Login</title>
+      </Helmet>
       {/* login form */}
       <form
         onSubmit={handleLogin}
