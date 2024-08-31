@@ -14,6 +14,7 @@ import { AuthContext } from "../AuthProviders/AuthProviders";
 import { ToastContainer, toast } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
 import "./styles.css";
+import logoImg from "../../public/Logo.jpg";
 
 const Navbar = () => {
   const { user, logOut } = useContext(AuthContext);
@@ -186,14 +187,17 @@ const Navbar = () => {
               </NavLink>
             </ul>
           </div>
-          <Link to="/" className="btn btn-ghost text-xl">
-            <span className="text-pink-600">
-              <span className="text-2xl">H</span>ealth
-            </span>{" "}
-            <span className="text-violet-700 -ml-1">
-              <span className="text-2xl">C</span>hamber
-            </span>
-          </Link>
+          <div className="flex justify-center items-center">
+            <img src={logoImg} className="h-6 w-6 -mr-1" alt="" />
+            <Link to="/" className="btn btn-ghost text-xl">
+              <span className="text-pink-600">
+                <span className="text-2xl">H</span>ealth
+              </span>{" "}
+              <span className="text-violet-700 -ml-1">
+                <span className="text-2xl">C</span>hamber
+              </span>
+            </Link>
+          </div>
         </div>
         <div id="menu" className="navbar-center hidden lg:flex">
           <ul className="py-3 mt-3 h-full -mx-3 overflow-y-auto whitespace-nowrap scroll-hidden">
@@ -209,7 +213,7 @@ const Navbar = () => {
             >
               Center of Excellence
               <ul
-                className="bg-gray-500 text-white p-2 rounded-md"
+                className="bg-gray-500 text-white p-2 rounded-md z-20"
                 id="submenu"
               >
                 <NavLink
