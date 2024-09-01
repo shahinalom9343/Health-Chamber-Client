@@ -53,7 +53,7 @@ const Register = () => {
       <Helmet>
         <title>Health Chamber | Registration</title>
       </Helmet>
-      <div className="container  flex items-center justify-center px-6 mx-auto">
+      <div className="container bg-sky-50 dark:bg-sky-950  flex items-center justify-center px-6 mx-auto">
         <form
           className="w-full max-w-lg border-2 p-4 my-1 rounded-lg shadow-md"
           onSubmit={handleSubmit(onSubmit)}

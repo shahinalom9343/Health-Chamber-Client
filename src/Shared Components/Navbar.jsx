@@ -70,9 +70,12 @@ const Navbar = () => {
           </div>
           <div className="flex-none navbar-end items-center gap-3">
             <div>
-              <button className="btn btn-outline hidden lg:flex">
+              <Link
+                to="/appointment"
+                className="btn btn-outline hidden lg:flex"
+              >
                 Book Your Appointment
-              </button>
+              </Link>
             </div>
             <div className="text-blue-700 hover:bg-violet-700 hover:text-white text-2xl bg-none border-2 p-1 rounded-full">
               <FaFacebook />

@@ -32,7 +32,7 @@ const Dashboard = () => {
                   <li>
                     <Link to="/dashboard/patients">
                       <PiPerson></PiPerson>
-                      Manage Doctors
+                      Manage Patients
                     </Link>
                   </li>
                 </>
