@@ -32,13 +32,13 @@ const Appointment = () => {
     navigate("/");
   };
   return (
-    <div className="space-y-2 max-w-5xl mx-auto">
+    <div className="space-y-2 max-w-5xl mx-auto overflow-hidden">
       <h1 className="text-3xl font-extrabold">Patient Details</h1>
       <p className="text-lg">
         Please fill the form below and we will get back soon to you.A
         confirmation email will be sent to you.
       </p>
-      <section className="p-4 bg-gray-50  rounded-md shadow-md dark:bg-gray-800">
+      <section className="p-4 rounded-md shadow-md border-2 dark:bg-gray-800">
         <form onSubmit={handleSubmit(onSubmit)}>
           <div className="grid grid-cols-1 gap-6 md:grid-cols-2">
             <div className="col-span-1 md:col-span-1">

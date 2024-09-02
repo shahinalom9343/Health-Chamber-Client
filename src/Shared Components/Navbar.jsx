@@ -46,51 +46,48 @@ const Navbar = () => {
   return (
     <div className="fixed min-w-full">
       {/* upper navbar for contact info */}
-      <div className="hidden lg:block bg-green-100 text-gray-700 dark:bg-gray-800 dark:text-white ">
-        <div className="navbar flex justify-center md:px-5 lg:px-10 items-center my-auto ">
-          <div className="flex-1 gap-3 navbar-start">
-            <div className="flex justify-center items-center gap-1">
-              <div>
-                <FaLocationDot />
-              </div>
-              <div>Library Bazar, Pabna Sadar,Pabna</div>
-            </div>
-            <button className="flex justify-center items-center gap-1">
-              <div>
-                <IoIosMail />
-              </div>
-              <div>cuet.shahin.eee12@gmail.com</div>
-            </button>
-            <button className="flex justify-center items-center gap-1">
-              <div>
-                <FaPhoneVolume />
-              </div>
-              <div>+8801738672464</div>
-            </button>
-          </div>
-          <div className="flex-none navbar-end items-center gap-3">
+
+      <div className="navbar justify-center md:px-5 lg:px-10 items-center my-auto hidden md:block dark:bg-gray-800  text-green-800 dark:text-green-200">
+        <div className="flex-1 gap-3 navbar-start">
+          <div className="flex justify-center items-center gap-1">
             <div>
-              <Link
-                to="/appointment"
-                className="btn btn-outline hidden lg:flex"
-              >
-                Book Your Appointment
-              </Link>
+              <FaLocationDot />
             </div>
-            <div className="text-blue-700 hover:bg-violet-700 hover:text-white text-2xl bg-none border-2 p-1 rounded-full">
-              <FaFacebook />
+            <div>Library Bazar, Pabna Sadar,Pabna</div>
+          </div>
+          <button className="flex justify-center items-center gap-1">
+            <div>
+              <IoIosMail />
             </div>
-            <div className="text-red-700 hover:bg-cyan-700 hover:text-white text-2xl bg-none border-2 p-1 rounded-full">
-              <IoLogoYoutube />
+            <div>cuet.shahin.eee12@gmail.com</div>
+          </button>
+          <button className="flex justify-center items-center gap-1">
+            <div>
+              <FaPhoneVolume />
             </div>
-            <div className="text-blue-400 hover:bg-pink-700 hover:text-white text-2xl bg-none border-2 p-1 rounded-full">
-              <FaLinkedin />
-            </div>
+            <div>+8801738672464</div>
+          </button>
+        </div>
+        <div className="flex-none navbar-end items-center gap-3">
+          <div>
+            <Link to="/appointment" className="btn btn-outline hidden lg:flex">
+              Book Your Appointment
+            </Link>
+          </div>
+          <div className="text-blue-700 hover:bg-violet-700 hover:text-white text-2xl bg-none border-2 p-1 rounded-full">
+            <FaFacebook />
+          </div>
+          <div className="text-red-700 hover:bg-cyan-700 hover:text-white text-2xl bg-none border-2 p-1 rounded-full">
+            <IoLogoYoutube />
+          </div>
+          <div className="text-blue-400 hover:bg-pink-700 hover:text-white text-2xl bg-none border-2 p-1 rounded-full">
+            <FaLinkedin />
           </div>
         </div>
       </div>
+
       {/* Lower navbar for different info */}
-      <div className="navbar bg-base-200 font-semibold top-0 shadow-lg dark:bg-none dark:text-white md:px-5 lg:px-10 z-10">
+      <div className="navbar  dark:bg-gray-800 font-semibold top-0 shadow-lg text-gray-600 dark:text-white md:px-5 lg:px-10 z-10">
         <div className="navbar-start">
           <div className="dropdown">
             <div tabIndex={0} role="button" className="btn btn-ghost lg:hidden">

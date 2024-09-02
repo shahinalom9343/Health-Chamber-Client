@@ -7,13 +7,17 @@ const MainLayout = () => {
   return (
     <div>
       {/* Navbar section */}
-      <div className="h-16 md:h-36">
+      <div className="h-16 md:h-36 z-20 overflow-hidden">
         <Navbar></Navbar>
       </div>
       {/* Outlet components */}
-      <Outlet></Outlet>
+      <div className="min-h-[calc(100vh-494px)] overflow-hidden">
+        <Outlet></Outlet>
+      </div>
       {/* Footer section */}
-      <Footer></Footer>
+      <div>
+        <Footer></Footer>
+      </div>
     </div>
   );
 };
