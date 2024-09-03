@@ -1,11 +1,15 @@
 import { useQuery } from "@tanstack/react-query";
-import React from "react";
+import React, { useEffect, useState } from "react";
 import useAxiosPublic from "../Hooks/useAxiosPublic";
 import { ColorRing } from "react-loader-spinner";
 import { Helmet } from "react-helmet";
 
 const Doctors = () => {
   const axiosSecure = useAxiosPublic();
+  const [doctor, setDoctor] = useState([]);
+  const [doctorsPerPage, setDoctorsPerPage] = useState(9);
+  const [currentPage, setCurrentPage] = useState(0);
+
   const { data: doctors = [], isLoading } = useQuery({
     queryKey: ["doctors"],
     queryFn: async () => {
@@ -13,6 +17,32 @@ const Doctors = () => {
       return result.data;
     },
   });
+  const numberofPages = Math.ceil(doctors.length / doctorsPerPage);
+  const pages = [...Array(numberofPages).keys()];
+
+  useEffect(() => {
+    fetch(
+      `http://localhost:5000/doctors?pages=${currentPage}&size=${doctorsPerPage}`
+    )
+      .then((res) => res.json())
+      .then((data) => setDoctor(data));
+  }, [currentPage, doctorsPerPage]);
+
+  const handleDoctorsPerPage = (e) => {
+    const value = parseInt(e.target.value);
+    setDoctorsPerPage(value);
+    setCurrentPage(0);
+  };
+  const handlePrevious = () => {
+    if (currentPage > 0) {
+      setCurrentPage(currentPage - 1);
+    }
+  };
+  const handleNext = () => {
+    if (currentPage < pages.length - 1) {
+      setCurrentPage(currentPage + 1);
+    }
+  };
   if (isLoading) {
     return (
       <div className="flex justify-center">
@@ -50,33 +80,35 @@ const Doctors = () => {
       <hr className="my-4 w-full broder-2" />
       {/* doctor card section */}
       <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-2">
-        {doctors.map((doctor) => (
+        {doctor.map((singleDoctor) => (
           <div
-            key={doctor._id}
+            key={singleDoctor._id}
             className="flex flex-col max-w-lg p-6 space-y-2 overflow-hidden rounded-lg shadow-xl dark:bg-gray-50 dark:text-gray-800"
           >
             <div>
               <img
-                src={doctor?.profile_image}
+                src={singleDoctor?.profile_image}
                 alt=""
                 className="object-cover w-full mb-4  h-64 dark:bg-gray-500"
               />
-              <h2 className="mb-1 text-xl font-semibold">{doctor?.name}</h2>
+              <h2 className="mb-1 text-xl font-semibold">
+                {singleDoctor?.name}
+              </h2>
             </div>
 
             <div className="space-x-2">
               <p>
                 <span className="font-bold mr-1">Speciality:</span>
-                <span className="text-pink-600">{doctor?.specialty}</span>
+                <span className="text-pink-600">{singleDoctor?.specialty}</span>
               </p>
               <p>
                 <span className="font-bold mr-1">Degree:</span>
-                <span className="text-pink-600">{doctor?.degree}</span>
+                <span className="text-pink-600">{singleDoctor?.degree}</span>
               </p>
               <p>
                 <span className="font-bold mr-1">Public Rating:</span>
                 <span className="badge badge-secondary">
-                  {doctor?.public_rating}
+                  {singleDoctor?.public_rating}
                 </span>
               </p>
             </div>
@@ -92,6 +124,47 @@ const Doctors = () => {
             </div>
           </div>
         ))}
+      </div>
+
+      {/* pagination section */}
+      <div className="py-4 flex justify-center items-center">
+        <p>
+          <button className="btn mr-1" onClick={handlePrevious}>
+            Previous
+          </button>
+        </p>
+        {pages.map((page) => (
+          <button
+            className={
+              (currentPage === page && "btn bg-purple-800 text-white") ||
+              "btn mr-1"
+            }
+            onClick={() => setCurrentPage(page)}
+            key={page}
+          >
+            {page}
+          </button>
+        ))}
+
+        <p>
+          <button className="btn ml-1" onClick={handleNext}>
+            Next
+          </button>
+        </p>
+        <label htmlFor="" className="ml-2">
+          Doctor Per Page:
+          <select
+            name=""
+            value={doctorsPerPage}
+            onChange={handleDoctorsPerPage}
+            className="btn bg-orange-400 text-white"
+          >
+            <option value="5">5</option>
+            <option value="10">10</option>
+            <option value="20">20</option>
+            <option value="40">40</option>
+          </select>
+        </label>
       </div>
     </div>
   );

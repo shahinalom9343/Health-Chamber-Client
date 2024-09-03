@@ -1,4 +1,3 @@
-import React from "react";
 import { Helmet } from "react-helmet";
 import Marquee from "react-fast-marquee";
 import img1 from "../../assets/banner1.jpg";
