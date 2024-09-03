@@ -6,6 +6,7 @@ import { Helmet } from "react-helmet";
 
 const Doctors = () => {
   const axiosSecure = useAxiosPublic();
+  const [search, setSearch] = useState("");
   const [doctor, setDoctor] = useState([]);
   const [doctorsPerPage, setDoctorsPerPage] = useState(9);
   const [currentPage, setCurrentPage] = useState(0);
@@ -22,11 +23,11 @@ const Doctors = () => {
 
   useEffect(() => {
     fetch(
-      `http://localhost:5000/doctors?pages=${currentPage}&size=${doctorsPerPage}`
+      `http://localhost:5000/doctors?pages=${currentPage}&size=${doctorsPerPage}&search=${search}`
     )
       .then((res) => res.json())
       .then((data) => setDoctor(data));
-  }, [currentPage, doctorsPerPage]);
+  }, [currentPage, doctorsPerPage, search]);
 
   const handleDoctorsPerPage = (e) => {
     const value = parseInt(e.target.value);
@@ -42,6 +43,11 @@ const Doctors = () => {
     if (currentPage < pages.length - 1) {
       setCurrentPage(currentPage + 1);
     }
+  };
+  const handleSearch = (e) => {
+    e.preventDefault();
+    const searchText = e.target.search.value;
+    setSearch(searchText);
   };
   if (isLoading) {
     return (
@@ -65,16 +71,26 @@ const Doctors = () => {
       </Helmet>
       {/* doctor list and search section */}
       <div>
-        <h2 className="text-5xl mt-2 mb-3 md:mt-6 lg:mt-10 text-center font-extrabold">
+        <h2 className="text-5xl mt-2 mb-3 md:mt-6 lg:mt-10 text-center font-extrabold text-black dark:text-slate-50">
           Doctors List
         </h2>
-        <div className="flex justify-center">
-          <input
-            type="text"
-            placeholder="Search your doctor here"
-            className="input input-bordered w-full max-w-lg"
-          />
-          <button className="btn bg-yellow-600 text-white">Search</button>
+        {/* search section */}
+        <div className="max-w-2xl mx-auto">
+          <form action="" onSubmit={handleSearch}>
+            <label htmlFor="" className="flex">
+              <input
+                type="text"
+                name="search"
+                placeholder="Search your doctor here"
+                className="input input-bordered w-full max-w-lg"
+              />
+              <input
+                type="submit"
+                value="search"
+                className="btn bg-yellow-600 text-white"
+              />
+            </label>
+          </form>
         </div>
       </div>
       <hr className="my-4 w-full broder-2" />
@@ -162,7 +178,7 @@ const Doctors = () => {
             <option value="5">5</option>
             <option value="10">10</option>
             <option value="20">20</option>
-            <option value="40">40</option>
+            <option value="30">30</option>
           </select>
         </label>
       </div>
